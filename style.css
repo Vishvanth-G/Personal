@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(-45deg, #ff416c, #ff4b2b, #ff758c, #ff7eb3);
+  background: linear-gradient(-45deg, #ff416c, #ff4b2b, #ff7eb3,#a11333);
   background-size: 400% 400%;
   animation: bg 15s ease infinite;
   overflow: hidden;
@@ -114,4 +114,5 @@ button:hover {
 .hidden {
   display: none;
 }
+
 
