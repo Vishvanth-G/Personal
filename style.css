@@ -2,10 +2,15 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background */
+body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +29,7 @@ body {
 /* Floating love texts & emojis */
 .floating span {
   position: absolute;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   font-weight: 500;
   white-space: nowrap;
   pointer-events: none;
@@ -33,7 +38,7 @@ body {
 
 @keyframes floatRandom {
   0% {
-    transform: translate(0,0) scale(0.8);
+    transform: translate(0, 0) scale(0.8);
     opacity: 0;
   }
   10% {
@@ -49,12 +54,20 @@ body {
 #container {
   position: relative;
   z-index: 10;
-  background: rgba(255,255,255,0.95);
-  padding: 30px;
-  width: 340px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 28px;
+  width: 90%;
+  max-width: 360px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Question text */
+#question {
+  font-size: 22px;
+  color: #b0005a;
+  margin-bottom: 20px;
 }
 
 /* Buttons */
@@ -67,11 +80,12 @@ button {
   border-radius: 25px;
   font-size: 15px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 button:hover {
   transform: scale(1.08);
+  background: #ff2f5d;
 }
 
 /* Quote */
@@ -79,9 +93,10 @@ button:hover {
   font-size: 22px;
   color: #b0005a;
   line-height: 1.5;
+  padding: 10px;
 }
 
-/* Photos */
+/* Photos across screen */
 .photos {
   position: fixed;
   inset: 0;
@@ -91,14 +106,15 @@ button:hover {
 
 .photos img {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
   object-fit: cover;
   border-radius: 18px;
   animation: floatPhoto 10s ease-in-out infinite;
   opacity: 0.85;
 }
 
+/* Photo positions */
 .photos img:nth-child(1) { top: 5%; left: 5%; }
 .photos img:nth-child(2) { top: 8%; right: 5%; }
 .photos img:nth-child(3) { bottom: 10%; left: 8%; }
@@ -107,10 +123,35 @@ button:hover {
 .photos img:nth-child(6) { top: 40%; right: 2%; }
 
 @keyframes floatPhoto {
-  0%,100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
 
+/* Hide helper */
 .hidden {
   display: none;
+}
+
+/* 📱 Mobile optimizations */
+@media (max-width: 480px) {
+
+  #question {
+    font-size: 19px;
+  }
+
+  .quote-box {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 9px 16px;
+  }
+
+  .photos img {
+    width: 90px;
+    height: 90px;
+    opacity: 0.75;
+  }
 }
