@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #ff416c, #ff4b2b, #ff758c, #ff7eb3);
+  background-size: 400% 400%;
+  animation: bg 15s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating love texts & emojis */
+.floating span {
+  position: absolute;
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: floatRandom linear forwards;
+}
+
+@keyframes floatRandom {
+  0% {
+    transform: translate(0,0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Main card */
+#container {
+  position: relative;
+  z-index: 10;
+  background: rgba(255,255,255,0.95);
+  padding: 30px;
+  width: 340px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+/* Buttons */
+button {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin: 8px;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+/* Quote */
+.quote-box {
+  font-size: 22px;
+  color: #b0005a;
+  line-height: 1.5;
+}
+
+/* Photos */
+.photos {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.photos img {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 18px;
+  animation: floatPhoto 10s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+.photos img:nth-child(1) { top: 5%; left: 5%; }
+.photos img:nth-child(2) { top: 8%; right: 5%; }
+.photos img:nth-child(3) { bottom: 10%; left: 8%; }
+.photos img:nth-child(4) { bottom: 5%; right: 8%; }
+.photos img:nth-child(5) { top: 40%; left: 2%; }
+.photos img:nth-child(6) { top: 40%; right: 2%; }
+
+@keyframes floatPhoto {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.hidden {
+  display: none;
+}
